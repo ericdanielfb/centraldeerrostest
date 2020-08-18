@@ -139,36 +139,36 @@ namespace CentralDeErros.ControllersTests
         }
 
 
-        [Fact]
-        public void UpdateEnvironment_ShouldCallService_AndReturn200WithDtos_WhenEnvironmentFound()
-        {
-            var expectedReturnFromService = new Environment() { Id = 1, Phase = "Teste" };
+        //[Fact]
+        //public void UpdateEnvironment_ShouldCallService_AndReturn200WithDtos_WhenEnvironmentFound()
+        //{
+        //    var expectedReturnFromService = new Environment() { Id = 1, Phase = "Teste" };
 
-            _serviceMock.Setup(x => x.RegisterOrUpdate(It.IsAny<Environment>())).Returns(expectedReturnFromService);
+        //    _serviceMock.Setup(x => x.RegisterOrUpdate(It.IsAny<Environment>())).Returns(expectedReturnFromService);
 
-            var result = _controller.UpdateEnvironment(1, expectedReturnFromService);
+        //    var result = _controller.UpdateEnvironment(1, expectedReturnFromService);
 
-            _serviceMock.Verify(x => x.RegisterOrUpdate(It.IsAny<Environment>()), Times.Once);
+        //    _serviceMock.Verify(x => x.RegisterOrUpdate(It.IsAny<Environment>()), Times.Once);
 
-            var objectResult = Assert.IsType<OkObjectResult>(result.Result);
-            Assert.Equal(200, objectResult.StatusCode);
+        //    var objectResult = Assert.IsType<OkObjectResult>(result.Result);
+        //    Assert.Equal(200, objectResult.StatusCode);
 
-            var dto = Assert.IsType<EnvironmentDTO>(objectResult.Value);
-            Assert.Equal(expectedReturnFromService.Phase.ToLower(), dto.Phase);
-        }
+        //    var dto = Assert.IsType<EnvironmentDTO>(objectResult.Value);
+        //    Assert.Equal(expectedReturnFromService.Phase.ToLower(), dto.Phase);
+        //}
 
-        [Fact]
-        public void UpdateEnvironment_ShouldCallService_AndReturn204_WhenEnvironmentNoContent()
-        {
-            var expectedReturnFromService = new Environment();
+        //[Fact]
+        //public void UpdateEnvironment_ShouldCallService_AndReturn204_WhenEnvironmentNoContent()
+        //{
+        //    var expectedReturnFromService = new Environment();
 
-            var result = _controller.UpdateEnvironment(null, expectedReturnFromService);
+        //    var result = _controller.UpdateEnvironment(null, expectedReturnFromService);
 
-            _serviceMock.Verify(x => x.RegisterOrUpdate(It.IsAny<Environment>()), Times.Never);
+        //    _serviceMock.Verify(x => x.RegisterOrUpdate(It.IsAny<Environment>()), Times.Never);
 
-            var objectResult = Assert.IsType<NoContentResult>(result.Result);
-            Assert.Equal(204, objectResult.StatusCode);
-        }
+        //    var objectResult = Assert.IsType<NoContentResult>(result.Result);
+        //    Assert.Equal(204, objectResult.StatusCode);
+        //}
 
 
 
