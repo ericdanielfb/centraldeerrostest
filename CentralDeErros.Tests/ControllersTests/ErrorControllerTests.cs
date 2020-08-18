@@ -27,28 +27,28 @@ namespace CentralDeErros.ControllersTests
             errors = FakeContext.Errors;
         }
 
-        [Fact]
-        public void Create_ShouldReturnOkResult()
-        {
-            //Arrange
-            var mockService = new Mock<IErrorService>();
-            mockService.Setup(x => x.Register(It.IsAny<Error>()));
+        //[Fact]
+        //public void Create_ShouldReturnOkResult()
+        //{
+        //    //Arrange
+        //    var mockService = new Mock<IErrorService>();
+        //    mockService.Setup(x => x.Register(It.IsAny<Error>()));
 
-            var controller = new ErrorController(mockService.Object, mapper);
+        //    var controller = new ErrorController(mockService.Object, mapper);
 
-            //Act
-            var contentResult = controller.Post(new ErrorEntryDTO
-            {
-                Details = "detail",
-                Title = "title",
-                Origin = "1.0.0.1",
-                EnviromentId = 1,
-                LevelId = 1,
-                MicrosserviceClientId = new Guid("031c156c-c072-4793-a542-4d20840b8031")
-            });
-            //Assert
-            Assert.IsType<OkObjectResult>(contentResult);
-        }
+        //    //Act
+        //    var contentResult = controller.Post(new ErrorEntryDTO
+        //    {
+        //        Details = "detail",
+        //        Title = "title",
+        //        Origin = "1.0.0.1",
+        //        EnviromentId = 1,
+        //        LevelId = 1,
+        //        MicrosserviceClientId = new Guid("031c156c-c072-4793-a542-4d20840b8031")
+        //    });
+        //    //Assert
+        //    Assert.IsType<OkObjectResult>(contentResult);
+        //}
 
         [Fact]
         public void Delete_ShouldReturnOkResult()
@@ -65,47 +65,47 @@ namespace CentralDeErros.ControllersTests
             Assert.IsType<OkResult>(contentResult);
         }
 
-        [Fact]
-        public void Update_ShouldReturnOkResult()
-        {
-            //Arrange
-            var dateTime = DateTime.Now;
-            Error updatedError = new Error
-            {
-                Id = 1,
-                Details = "detail",
-                Title = "title",
-                Origin = "1.0.0.1",
-                ErrorDate = dateTime,
-                EnviromentId = 1,
-                LevelId = 1,
-                MicrosserviceClientId = new Guid("031c156c-c072-4793-a542-4d20840b8031")
-            };
+        //[Fact]
+        //public void Update_ShouldReturnOkResult()
+        //{
+        //    //Arrange
+        //    var dateTime = DateTime.Now;
+        //    Error updatedError = new Error
+        //    {
+        //        Id = 1,
+        //        Details = "detail",
+        //        Title = "title",
+        //        Origin = "1.0.0.1",
+        //        ErrorDate = dateTime,
+        //        EnviromentId = 1,
+        //        LevelId = 1,
+        //        MicrosserviceClientId = new Guid("031c156c-c072-4793-a542-4d20840b8031")
+        //    };
 
 
-            var mockService = new Mock<IErrorService>();
-            mockService.Setup(x => x.Update(It.IsAny<Error>()))
-                .Returns(updatedError);
-            mockService.Setup(x => x.CheckId<Error>(It.IsAny<int>()))
-                .Returns((int id) => errors.Any(x => x.Id == id));
+        //    var mockService = new Mock<IErrorService>();
+        //    mockService.Setup(x => x.Update(It.IsAny<Error>()))
+        //        .Returns(updatedError);
+        //    mockService.Setup(x => x.CheckId<Error>(It.IsAny<int>()))
+        //        .Returns((int id) => errors.Any(x => x.Id == id));
 
 
-            var controller = new ErrorController(mockService.Object, mapper);
+        //    var controller = new ErrorController(mockService.Object, mapper);
 
-            //Act
-            var contentResult = controller.Put(new ErrorEntryDTO
-            {
-                Id = 1,
-                Details = "detail",
-                Title = "title",
-                Origin = "1.0.0.1",
-                EnviromentId = 1,
-                LevelId = 1,
-                MicrosserviceClientId = new Guid("031c156c-c072-4793-a542-4d20840b8031")
-            });
-            //Assert
-            Assert.IsType<OkResult>(contentResult);
-        }
+        //    //Act
+        //    var contentResult = controller.Put(new ErrorEntryDTO
+        //    {
+        //        Id = 1,
+        //        Details = "detail",
+        //        Title = "title",
+        //        Origin = "1.0.0.1",
+        //        EnviromentId = 1,
+        //        LevelId = 1,
+        //        MicrosserviceClientId = new Guid("031c156c-c072-4793-a542-4d20840b8031")
+        //    });
+        //    //Assert
+        //    Assert.IsType<OkResult>(contentResult);
+        //}
 
         [Fact]
         public void GetItems_ShouldReturnOkResult()
