@@ -18,6 +18,7 @@ namespace CentralDeErros.API.Controllers
 
         public UserController(UserManager<IdentityUser> userManager, IMapper mapper)
         {
+            //comentário
             _mapper = mapper;
             _userManager = userManager;
         }
